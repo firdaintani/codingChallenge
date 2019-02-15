@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <!-- <h1 id="tampil"></h1> -->
+    <center>
+        <table id=tampil></table>
+
+
+        <input type="number" id='jumlah'><br>
+        <input type="button" value="Kiri" onclick="putarKiri()">
+        <input type="button" value="Kanan" onclick="putarKanan()">
+    </center>
+
+    <script>
+        matrix = [
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12],
+            [13, 14, 15, 16]
+        ]
+        newMatrix = []
+
+        function tampilMatrix() {
+            hasil = ''
+            for (i = 0; i < 4; i++) {
+                hasil += `<tr>`
+                for (j = 0; j < 4; j++) {
+                    hasil += `<td>${matrix[i][j]}</td>`
+
+                }
+                hasil += `<td> <input type="button" value="sort" onclick= 'sortBaris(${i})'</td>`
+                hasil += `</tr>`
+            }
+            for (k = 0; k < 4; k++) {
+                hasil += `<td> <input type="button" value="sort" onclick= 'sortKolom(${k})'</td>`
+            }
+            document.getElementById('tampil').innerHTML = hasil
+        }
+
+        matrixB=[[],[],[],[]]
+        function putarKanan() {
+           var putar = document.getElementById('jumlah').value
+           
+             
+           for (i = 0; i < putar; i++) {
+                
+                for (x = 0; x < 4; x++) {
+                    
+                    for (y = 3; y >= 0; y--) {
+                       // alert(matrix[y][x])
+                      
+                       z = Math.abs(y - 3)
+                        matrixB[x][z] = matrix[y][x]
+                      
+                    }
+                }
+                
+            matrix=matrixB
+                matrixB=[[],[],[],[]]
+        }
+        tampilMatrix()
+        }
+
+        function putarKiri(){
+            var putar = document.getElementById('jumlah').value
+           
+            for(i=0;i<putar;i++){
+            for(c=3;c>=0;c--){
+            for(b=0;b<4;b++){
+                z = Math.abs(c - 3)
+                matrixB[z][b] =matrix[b][c]
+            }
+           
+        }
+        matrix=matrixB
+                matrixB=[[],[],[],[]]
+    
+    }
+    tampilMatrix()
+     
+        }
+        sortMat=0
+        function sortBaris(index){
+            sortMat++
+            if(sortMat%2!=0){
+                matrix[index].sort(function(a,b){return a-b})
+
+            } else{
+                matrix[index].sort(function(a,b){return b-a})
+            }
+            tampilMatrix()
+        }
+
+        sortKol=0
+        function sortKolom(index){
+            arr =[]
+            sortKol++
+            arr.push(matrix[0][index])
+            arr.push(matrix[1][index])
+            arr.push(matrix[2][index])
+            arr.push(matrix[3][index])
+            if(sortKol%2!=0){
+                arr.sort(function(a,b){return a-b})
+            }
+            else {
+                arr.sort(function(a,b){return b-a})
+            }
+            // for(var i = 0; i < matrix.length; i++){
+            //     arr.push(matrix[i][index])
+            // }
+
+           
+            
+            matrix[0][index]=arr[0]
+            matrix[1][index]=arr[1]
+            matrix[2][index]=arr[2]
+            matrix[3][index]=arr[3]
+            tampilMatrix()
+        }
+
+        tampilMatrix()
+    </script>
+</body>
+
+</html>
