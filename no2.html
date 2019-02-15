@@ -29,7 +29,7 @@
             [9, 10, 11, 12],
             [13, 14, 15, 16]
         ]
-        newMatrix = []
+        //        newMatrix = []
 
         function tampilMatrix() {
             hasil = ''
@@ -48,84 +48,108 @@
             document.getElementById('tampil').innerHTML = hasil
         }
 
-        matrixB=[[],[],[],[]]
+        matrixB = [
+            [],
+            [],
+            [],
+            []
+        ]
+
         function putarKanan() {
-           var putar = document.getElementById('jumlah').value
-           
-             
-           for (i = 0; i < putar; i++) {
-                
+            var putar = document.getElementById('jumlah').value
+
+
+            for (i = 0; i < putar; i++) {
+
                 for (x = 0; x < 4; x++) {
-                    
+
                     for (y = 3; y >= 0; y--) {
-                       // alert(matrix[y][x])
-                      
-                       z = Math.abs(y - 3)
+                        // alert(matrix[y][x])
+
+                        z = Math.abs(y - 3)
                         matrixB[x][z] = matrix[y][x]
-                      
+
                     }
                 }
-                
-            matrix=matrixB
-                matrixB=[[],[],[],[]]
-        }
-        tampilMatrix()
-        }
 
-        function putarKiri(){
-            var putar = document.getElementById('jumlah').value
-           
-            for(i=0;i<putar;i++){
-            for(c=3;c>=0;c--){
-            for(b=0;b<4;b++){
-                z = Math.abs(c - 3)
-                matrixB[z][b] =matrix[b][c]
-            }
-           
-        }
-        matrix=matrixB
-                matrixB=[[],[],[],[]]
-    
-    }
-    tampilMatrix()
-     
-        }
-        sortMat=0
-        function sortBaris(index){
-            sortMat++
-            if(sortMat%2!=0){
-                matrix[index].sort(function(a,b){return a-b})
-
-            } else{
-                matrix[index].sort(function(a,b){return b-a})
+                matrix = matrixB
+                matrixB = [
+                    [],
+                    [],
+                    [],
+                    []
+                ]
             }
             tampilMatrix()
         }
 
-        sortKol=0
-        function sortKolom(index){
-            arr =[]
+        function putarKiri() {
+            var putar = document.getElementById('jumlah').value
+
+            for (i = 0; i < putar; i++) {
+                for (c = 3; c >= 0; c--) {
+                    for (b = 0; b < 4; b++) {
+                        z = Math.abs(c - 3)
+                        matrixB[z][b] = matrix[b][c]
+                    }
+
+                }
+                matrix = matrixB
+                matrixB = [
+                    [],
+                    [],
+                    [],
+                    []
+                ]
+
+            }
+            tampilMatrix()
+
+        }
+        sortMat = 0
+
+        function sortBaris(index) {
+            sortMat++
+            if (sortMat % 2 != 0) {
+                matrix[index].sort(function (a, b) {
+                    return a - b
+                })
+
+            } else {
+                matrix[index].sort(function (a, b) {
+                    return b - a
+                })
+            }
+            tampilMatrix()
+        }
+
+        sortKol = 0
+
+        function sortKolom(index) {
+            //ini sortnya masih manual
+            arr = []
             sortKol++
             arr.push(matrix[0][index])
             arr.push(matrix[1][index])
             arr.push(matrix[2][index])
             arr.push(matrix[3][index])
-            if(sortKol%2!=0){
-                arr.sort(function(a,b){return a-b})
-            }
-            else {
-                arr.sort(function(a,b){return b-a})
+            if (sortKol % 2 != 0) {
+                arr.sort(function (a, b) {
+                    return a - b
+                })
+            } else {
+                arr.sort(function (a, b) {
+                    return b - a
+                })
             }
             // for(var i = 0; i < matrix.length; i++){
             //     arr.push(matrix[i][index])
             // }
 
-           
-            
-            matrix[0][index]=arr[0]
-            matrix[1][index]=arr[1]
-            matrix[2][index]=arr[2]
-            matrix[3][index]=arr[3]
+            matrix[0][index] = arr[0]
+            matrix[1][index] = arr[1]
+            matrix[2][index] = arr[2]
+            matrix[3][index] = arr[3]
             tampilMatrix()
         }
 
