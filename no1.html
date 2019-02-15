@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <table >
+            <tr id="tampilHasil">
+
+            </tr>
+        </table>
+    </center>
+
+    <input type="number" >
+    <input type="button" value="tampil" onclick="show()">
+    <script>
+        var nol = `_<br>
+            | |<br>
+            |_|`
+        var satu = `<br>
+            |<br>
+            |`
+
+            var dua = `_<br>
+            _|<br>
+            |_`
+
+            var tiga = `_<br>
+                        _|<br>
+                        _|        
+            `
+            var empat=`<br>|_|<br>
+                        &nbsp;&nbsp;&nbsp|`
+            var lima = `_<br>
+                        |_<br>
+                         _|`
+
+            var enam= `&nbsp _<br>
+                       |_<br>
+                       |_|`
+            var tujuh= `_<br>
+             &nbsp| <br>
+              &nbsp|`
+              var delapan = `_ <br>
+              |_| <br>
+            |_|`
+
+            var sembilan = `_<br>
+                            |_|<br>
+                            _|`
+
+        
+
+        var show=()=>{
+            angka= document.getElementsByTagName('input')[0].value
+//alert(angka)
+    var template=[nol,satu,dua,tiga,empat,lima,enam,tujuh,delapan,sembilan]
+        var arr = []
+        // hasil=''
+            // if(angka.length>4){alert('Harus 4 angka')}
+            angka1 = angka.split('')
+            arr=[]
+            if(angka.length > 4){
+                alert('Inputan tidak boleh lebih dari 4 digit')
+            } else{
+                // alert(angka1[1])
+            for(i=0;i<angka1.length;i++){
+                for(j=0;j<template.length;j++){
+                // alert(angka1[i])
+                    if(angka1[i]==j){
+                    // alert('angka1')
+                    
+                    arr.push(template[j])
+                }
+                }
+                
+            }
+
+            hasil=''
+            for(z=0;z<arr.length;z++){
+                hasil+=`<td>${arr[z]}</td>`
+                
+            }
+            alert(hasil)
+            document.getElementById('tampilHasil').innerHTML=hasil
+
+            }
+        }
+
+        </script>
+</body>
+</html>
